@@ -1,0 +1,7 @@
+# Backup files
+*.pgSQL
+*.gz
+*.log
+
+# Other folders
+.Misc/
