@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if grep -F -q "CallForBackup.sh" /etc/config/crontab; then
+grep -F -q "CallForBackup.sh" /etc/config/crontab; 
+if ["$?" -eq 0]; then
 	echo "CallForBackup.sh" is already listed in crontab
 	exit 1
 else
