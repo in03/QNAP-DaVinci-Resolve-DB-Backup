@@ -39,7 +39,7 @@ The following files play their respective parts:
 - "CallForBackup.sh", calls the above file and logs output
 - "ResolveDB-backup-install", installs the above files locally and makes them executable.
 - "solo.sh", is a perl script written by Tim Kay which prevents the job running over itself by binding port 2020 until execution finishes. https://www.timkay.com/solo/
-- "ResolveDB-cron-install",  re-adds "CallForBackup.sh" to the crontab every reboot. Unfortunately, necessary for our QNAP. This file must be in the respective autorun scripts folder, e.g: ```/share/CACHEDEV1_DATA/.system/autorun/scripts```
+- "ResolveDB-cron-install",  re-adds "CallForBackup.sh" to the crontab every reboot. Unfortunately, necessary for our QNAP. This file must be set up to autorun each reboot! Recommend using OneCDOnly's ```create-autorun``` to make adding scripts to autorun easier.
 
 If you make changes, make sure you reinstall by running "ResolveDB-backup-install" manually from an SSH.
 
