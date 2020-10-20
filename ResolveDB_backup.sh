@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ResolveDBpath="/share/DaVinciDatabase/ResolveDatabaseBackups"
 ContainerName="postgres-1"
 UserName="postgres"
@@ -15,16 +16,15 @@ DaysThisMonth=$(date -d "$(($(date +%-m)%12+1))/1 - 1 days" +%d)
 
 function cleanUp {
 	echo Cleaning up...
-	rm -f ~ResolveBackup.pgSQL.gz
+	rm -f $ResolveDBpath/~ResolveBackup.pgSQL.gz
 	if [ $? -eq 1 ]
 	then
-		rm -f ~ResolveBackup.pgSQL
+		rm -f $ResolveDBpath/~ResolveBackup.pgSQL
+		if [ $? -eq 1 ]
+		then
+			echo Could not clean up!
 	fi
 }
-
-echo
-echo
-
 
 
 # Dump database

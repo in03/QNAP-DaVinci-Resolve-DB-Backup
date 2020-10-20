@@ -1,0 +1,30 @@
+crond: crond (busybox 1.24.1) started, log level 8
+crond: USER admin pid 10999 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 11364 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 11738 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 12085 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 12864 cmd /etc/init.d/storage_usage.sh
+crond: USER admin pid 12865 cmd /sbin/config_cache_util 0
+crond: USER admin pid 12866 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 12868 cmd /usr/local/bin/CallForBackup.sh
+tee: logs/2020-10-20_11_40_database_backup.log: No such file or directory
+crond: USER admin pid 15176 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 15533 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 15987 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 16362 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 16817 cmd /etc/init.d/nss2_dusg.sh
+crond: USER admin pid 16818 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 16819 cmd /usr/local/bin/CallForBackup.sh
+tee: logs/2020-10-20_11_45_database_backup.log: No such file or directory
+crond: USER admin pid 17410 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 17871 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 18245 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 18580 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 19204 cmd /etc/init.d/storage_usage.sh
+crond: USER admin pid 19205 cmd /sbin/config_cache_util 0
+crond: USER admin pid 19206 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 19207 cmd /usr/local/bin/CallForBackup.sh
+tee: logs/2020-10-20_11_50_database_backup.log: No such file or directory
+gzip: can't open '/share/DaVinciDatabase/ResolveDatabaseBackups/~ResolveBackup.pgSQL.gz': File exists
+crond: USER admin pid 21801 cmd /var/cache/netmgr/lock_timer.sh
+crond: USER admin pid 22223 cmd /var/cache/netmgr/lock_timer.sh

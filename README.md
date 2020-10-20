@@ -43,3 +43,7 @@ The following files play their respective parts:
 
 If you make changes, make sure you reinstall by running "ResolveDB-backup-install" manually from an SSH.
 
+
+## Notes:
+If you install Python 3 from the QNAP AppCenter, to call it from shell, you'll have to run this command to add 'python3' as an environment variable. 
+```. /etc/profile.d/python3.bash```
