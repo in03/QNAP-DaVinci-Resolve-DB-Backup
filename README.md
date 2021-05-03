@@ -1,45 +1,18 @@
-# Yo!
+# Hey!
 
-## Why it does:
-At our office, the Davinci Resolve database is stored on our QNAP 24 bay NAS known as "Boris".
-Unfortunately, the DaVinci Resolve Project Server program doesn't work on Linux, so any backups have to be created manually.
-This is an automated way of doing that without DRPS.
+If you're here, it's because you have the niche need of frequently backing up your DaVinci Resolve PostgreSQL database that runs on your QNAP NAS. Maybe like me, you use the collaborative editing feature, which unfortunately, is not compatible with project backups. For whatever reason, backing up the whole database at regular automatic intervals is a none too shabby idea. I threw this collection of *poorly written* scripts together to work in the very specific environment. QNAP runs busybox Linux, has very few Linux tools and no external package support out of the box. Adding it is a pain. It doesn't take kindly to running custom scripts. Anything foreign is deleted from the filesystem upon reboot. The series of steps to get this working on your system are daunting. And it may not even work on your system! QNAP may change the rules in a firmware update... I tell you this because there's a better solution:
 
+Install Container Station on your QNAP NAS.
+Do yourself a favour and install Portainer to manage your running containers better.
+Run this container (substituing variables. Read the README): https://github.com/prodrigestivill/docker-postgres-backup-local. 
+It literally does exactly what my script does without running in the dangerous waters of QNAP's native, murky Linux ecosystem.
+Done! 
 
+# There's a catch #
+The container's time is set to UTC by default. This means for me (AEST), 2pm is actually 12:00am, when I want my backups to start. You can do the maths and account for the mismatched timezones. That was good enough for me. If it isn't for you, feel free to submit a pull request with a timezone environment variable implemented to the above repo.
 
-
-
-## What it does:
-At 2am every morning, the NAS runs a script:
-```/usr/local/bin/CallForBackup.sh```
-
-Each time, a **daily** backup is created with the day of the week in its name.
-E.g, Friday would be, ```Day5_DatabaseBackup.gz```
-Next Friday this backup will be overwritten.
-
-Every Saturday a **weekly** backup is created with the week of the month in its name.
-E.g, 26th of Sept would be ```Week4_DatabaseBackup.gz```
-Next month, this will be overwritten.
-
-On the first day of every month a **monthly** backup is created with the month of the year in its name.
-E.g., 1st of Oct would be ```Month10_DatabaseBackup.gz```
-The 1st of Oct next year, this will be overwritten.
-
-This means that we have recent backups with Daily if for some reason something goes wrong in a day,
-but also weekly if someone accidentally ruins a project and only finds out some time later.
-Monthly is a bit overkill, but who knows if we have to really ressurect something.
-
-
-
-
-## Ch-ch-ch-changes:
-The following files play their respective parts:
-
-- "ResolveDB_backup.sh", performs the actual backup
-- "CallForBackup.sh", calls the above file and logs output
-- "ResolveDB-backup-install", installs the above files locally and makes them executable.
-- "solo.sh", is a perl script written by Tim Kay which prevents the job running over itself by binding port 2020 until execution finishes. https://www.timkay.com/solo/
-- "ResolveDB-cron-install",  re-adds "CallForBackup.sh" to the crontab every reboot. Unfortunately, necessary for our QNAP. This file must be set up to autorun each reboot! Recommend using OneCDOnly's ```create-autorun``` to make adding scripts to autorun easier.
-
-If you make changes, make sure you reinstall by running "ResolveDB-backup-install" manually from an SSH.
-
+# Conclusion #
+Basically, only use my script if your QNAP NAS doesn't support running containers.
+Even then, this repo was my first foray into shell scripting.
+I know it's spaghetti, and I know most of the variables and filenames are half CamelCase and snake_case.
+I work an awkward split of javascript and python and I couldn't remember what shell scripting favoured.
